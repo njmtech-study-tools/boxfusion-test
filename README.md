@@ -2,7 +2,11 @@
 
 # 🚀 Boxfusion Technical Assessment & Practice Portfolio
 
+> [!TIP]
+> 🌐 **Live Web Application**: Practice all 25 assessment questions interactively in your browser with real-time feedback, domain filtering, and technical explanations at **[omoinjm.github.io/boxfusion_test](https://omoinjm.github.io/boxfusion_test)**.
+
 ---
+
 
 ## 📌 About This Repository
 

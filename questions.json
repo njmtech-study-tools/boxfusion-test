@@ -1,0 +1,352 @@
+[
+  {
+    "id": "q1",
+    "category": "Algorithms & Complexity",
+    "title": "Space Complexity of Algorithm with Auxiliary Array",
+    "code": "function processData(arr) {\n  let n = arr.length;\n  let tempArray = new Array(n);\n  for (let i = 0; i < n; i++) {\n    tempArray[i] = arr[i] * 2;\n  }\n  return tempArray;\n}",
+    "options": [
+      "Input parameters passed into the algorithm",
+      "An auxiliary array of size n",
+      "The value of integer n",
+      "Constants declared within loops"
+    ],
+    "correctIndex": 1,
+    "explanation": "Auxiliary space complexity evaluates the extra memory allocated dynamically during execution. The temporary array `tempArray` of size `n` scales directly with input size O(n), driving the asymptotic space complexity."
+  },
+  {
+    "id": "q2",
+    "category": "React Hooks & Lifecycle",
+    "title": "useEffect Hook with Empty Dependency Array",
+    "code": "function Component() {\n  React.useEffect(() => {\n    console.log('Mounted');\n  }, []);\n  return <div>Hello</div>;\n}",
+    "options": [
+      "It will execute after every re-render",
+      "It will execute only once after the component mounts",
+      "It will execute before component unmounts",
+      "It causes an infinite loop"
+    ],
+    "correctIndex": 1,
+    "explanation": "Passing an empty dependency array `[]` tells React that the effect function does not depend on any props or state values, so it runs only once after the initial render (mount)."
+  },
+  {
+    "id": "q3",
+    "category": "React Hooks & Lifecycle",
+    "title": "useEffect Execution with State Update in Effect",
+    "code": "function PracticeComponent(props) {\n  const [count, setCount] = React.useState(0);\n  React.useEffect(() => {\n    if (props.visible) {\n      console.log('Hello');\n      setCount(1);\n    }\n  }, [props.visible]);\n  return <div>{count}</div>;\n}",
+    "options": [
+      "Logs 'Hello' 0 times",
+      "Logs 'Hello' 1 time",
+      "Logs 'Hello' 2 times",
+      "Logs 'Hello' infinitely"
+    ],
+    "correctIndex": 1,
+    "explanation": "When `props.visible` changes to true, the effect triggers and logs 'Hello' once. Calling `setCount(1)` triggers a re-render. Since `props.visible` did not change during the second render, the effect does NOT fire again."
+  },
+  {
+    "id": "q4",
+    "category": "React Hooks & Lifecycle",
+    "title": "Conditional JSX Unmounting",
+    "code": "function Parent() {\n  const [value, setValue] = React.useState(1);\n  return (\n    <div>\n      {value === 3 && <MyChild />}\n    </div>\n  );\n}",
+    "options": [
+      "MyChild stays mounted permanently",
+      "MyChild is unmounted when value is not 3",
+      "MyChild re-renders on every prop update without unmounting",
+      "Syntax error in short-circuit evaluation"
+    ],
+    "correctIndex": 1,
+    "explanation": "In React, when a conditional expression evaluates to `false`, React unmounts the component tree for that element and destroys its internal state and ref hooks."
+  },
+  {
+    "id": "q5",
+    "category": "React Architecture & Context API",
+    "title": "Accessing Context Values in Functional Components",
+    "code": "const ThemeContext = React.createContext('light');\n\nfunction Display() {\n  const theme = React.useContext(ThemeContext);\n  return <div>{theme}</div>;\n}",
+    "options": [
+      "React.useContext(ThemeContext)",
+      "React.createContext(ThemeContext)",
+      "ThemeContext.getValue()",
+      "useProps(ThemeContext)"
+    ],
+    "correctIndex": 0,
+    "explanation": "`React.useContext(Context)` accepts a context object created by `React.createContext()` and returns the current context value for that context from the nearest `<Context.Provider>`."
+  },
+  {
+    "id": "q6",
+    "category": "State Management & DOM Refs",
+    "title": "Uncontrolled Checkbox Input with useRef",
+    "code": "function CheckboxComponent() {\n  const inputRef = React.useRef(null);\n  return (\n    <input \n      type=\"checkbox\" \n      defaultChecked \n      ref={inputRef} \n      onChange={() => console.log(inputRef.current.checked)} \n    />\n  );\n}",
+    "options": [
+      "inputRef.current is null on change",
+      "inputRef.current.checked returns true/false reflecting actual DOM state",
+      "defaultChecked causes a runtime error with useRef",
+      "React converts it automatically to a controlled input"
+    ],
+    "correctIndex": 1,
+    "explanation": "Using `defaultChecked` creates an uncontrolled checkbox component. Attaching a ref via `useRef` allows reading the native DOM property `inputRef.current.checked` directly."
+  },
+  {
+    "id": "q7",
+    "category": "State Management & DOM Refs",
+    "title": "Mutating Local Variables in Event Handlers",
+    "code": "function LocalVarComponent() {\n  let count = 1;\n  const handleClick = () => {\n    count = 2;\n    console.log(count);\n  };\n  return <button onClick={handleClick}>Click</button>;\n}",
+    "options": [
+      "Logs 1",
+      "Logs 2",
+      "Triggers a component re-render",
+      "Throws a ConstAssignment error"
+    ],
+    "correctIndex": 1,
+    "explanation": "Mutating a plain local variable inside an event handler updates its value in the handler scope and logs 2, but does NOT trigger a React re-render. When the component re-renders later for another reason, `count` resets to 1."
+  },
+  {
+    "id": "q8",
+    "category": "State Management & DOM Refs",
+    "title": "Accessing Input Value via useRef",
+    "code": "function InputRefComponent() {\n  const inputRef = React.useRef(null);\n  const handleFocus = () => {\n    console.log(inputRef.current.value);\n  };\n  return <input ref={inputRef} defaultValue=\"hello\" onFocus={handleFocus} />;\n}",
+    "options": [
+      "Logs 'hello'",
+      "Logs null",
+      "Logs undefined",
+      "Logs [HTMLInputElement]"
+    ],
+    "correctIndex": 0,
+    "explanation": "`inputRef.current` points to the underlying HTMLInputElement node. Dereferencing `.value` retrieves the current text value ('hello')."
+  },
+  {
+    "id": "q9",
+    "category": "Algorithms & Complexity",
+    "title": "Rotate Array (Children's Game Simulation)",
+    "code": "function rotateArray(n, k, arr) {\n  let shift = k % n;\n  let result = new Array(n);\n  for (let i = 0; i < n; i++) {\n    let newIndex = (i + shift) % n;\n    result[newIndex] = arr[i];\n  }\n  return result;\n}",
+    "options": [
+      "Rotate right by (k % n) positions using modulo indexing",
+      "Rotate left by k positions",
+      "Sort array in ascending order",
+      "Reverse array in place"
+    ],
+    "correctIndex": 0,
+    "explanation": "Shifting elements to the right by k positions in a circular array requires calculating `newIndex = (i + k) % n`. Using modulo handles k > n and circular wrap-around efficiently in O(n) time and O(n) space."
+  },
+  {
+    "id": "q10",
+    "category": "Algorithms & Complexity",
+    "title": "Queue FIFO Deletion Operations",
+    "code": "let queue = [30, 70, 30, 80, 50];\n// Perform 3 dequeue (delete) operations\nqueue.shift();\nqueue.shift();\nqueue.shift();",
+    "options": [
+      "NULL",
+      "[30, 70, 30]",
+      "[80, 50]",
+      "[30, 70]"
+    ],
+    "correctIndex": 2,
+    "explanation": "A Queue operates on First-In, First-Out (FIFO). The first 3 enqueued elements (30, 70, 30) are deleted first, leaving [80, 50] in the queue."
+  },
+  {
+    "id": "q11",
+    "category": "Algorithms & Complexity",
+    "title": "Binary Search Tree Construction Validity",
+    "code": "// Set A: [32, '+', 35, '/', 4, '-44']\n// Set B: [10, 20, 30, 12, 34, 23]\n// Set C: ['Kanesha', 'Dinesh', 'Raul', 'Mark', 'Mimi']\n// Set D: [1.65, 2.33, 4.55, 9.12, 3.11, 2.15]",
+    "options": [
+      "Set A: [32, '+', 35, '/', 4, '-44']",
+      "Set B: [10, 20, 30, 12, 34, 23]",
+      "Set C: ['Kanesha', 'Dinesh', 'Raul', 'Mark', 'Mimi']",
+      "Set D: [1.65, 2.33, 4.55, 9.12, 3.11, 2.15]"
+    ],
+    "correctIndex": 0,
+    "explanation": "Binary Search Trees require elements to have a strict total ordering (comparable keys). Mixing numbers with mathematical symbol strings (`+`, `/`) breaks ordering guarantees unless custom comparators are defined."
+  },
+  {
+    "id": "q12",
+    "category": "React Hooks & Lifecycle",
+    "title": "React Render Props & Array Join Output",
+    "code": "const MyComponent = ({ render }) => (\n  <>{render().join()}</>\n);\n\nconst MyApp = () => (\n  <MyComponent render={() => ['One', 'Two']} />\n);",
+    "options": [
+      "Nothing. The application will crash.",
+      "The text [object Object]",
+      "The text ['One', 'Two']",
+      "The text One,Two"
+    ],
+    "correctIndex": 3,
+    "explanation": "`render()` returns `['One', 'Two']`. Calling `Array.prototype.join()` without parameters defaults to a comma separator, producing string `'One,Two'`, rendered directly as visible JSX text."
+  },
+  {
+    "id": "q13",
+    "category": "React Architecture & Context API",
+    "title": "React HOC Prop Forwarding via JSX Spread",
+    "code": "const withHideOnHover = (C) => () => {\n  const [hovered, setHovered] = useState();\n  return (\n    <C\n      onMouseEnter={() => setHovered(true)}\n      style={hovered ? { display: 'none' } : {}}\n    />\n  );\n};\n\n// Target Component:",
+    "options": [
+      "const MyC = (p) => <div {...p}>Hello</div>;",
+      "const MyC = (p) => <div onHover={p.onMouseEnter}>Hello</div>;",
+      "const MyC = (p) => <div onMouseEnter={p}>Hello</div>;",
+      "const MyC = (p) => <div>Hello</div>;"
+    ],
+    "correctIndex": 0,
+    "explanation": "Higher-Order Components pass props down to wrapped components. Using JSX spread `<div {...p}>` ensures all passed props (`onMouseEnter`, `style`) are attached to the underlying DOM node."
+  },
+  {
+    "id": "q14",
+    "category": "Algorithms & Complexity",
+    "title": "Minimum Removals to Change MEX Value (updateMEX)",
+    "code": "// Input: arr = [0, 1, 1, 4], num = 4\n// Original MEX = 2\n// To change MEX, remove element with minimum frequency among 0..MEX-1\n// frequency[0] = 1, frequency[1] = 2 -> min frequency is 1",
+    "options": [
+      "1 removal required",
+      "2 removals required",
+      "0 removals required",
+      "-1 (Impossible)"
+    ],
+    "correctIndex": 0,
+    "explanation": "To alter the MEX value of an array, you must remove all occurrences of at least one number less than MEX. Among values 0 and 1, number 0 has frequency 1, requiring 1 removal."
+  },
+  {
+    "id": "q15",
+    "category": "Software Engineering Practices",
+    "title": "Logical Reasoning — Work Efficiency Contradiction",
+    "code": "Statement 1: Being efficient requires wisdom and balancing time/effort against value.\nStatement 2: Efficient employees blindly accept any assigned task without questioning.",
+    "options": [
+      "Statement 2 contradicts Statement 1",
+      "Statement 2 supports Statement 1",
+      "Statement 2 restates Statement 1",
+      "Statement 2 is irrelevant to Statement 1"
+    ],
+    "correctIndex": 0,
+    "explanation": "Statement 1 requires evaluating task value and applying wisdom, whereas Statement 2 advocates blindly accepting tasks without question. These statements directly contradict each other."
+  },
+  {
+    "id": "q16",
+    "category": "Software Engineering Practices",
+    "title": "Critical Thinking — Customer Satisfaction & User Adoption Assumption",
+    "code": "Premise: Companies involving customers early have 16% higher satisfaction.\nConclusion: Early customer feedback enhances user adoption.",
+    "options": [
+      "The survey interviewed companies creating similar products.",
+      "Costs of early customer involvement are offset by revenue.",
+      "Increased customer satisfaction results in increased user adoption.",
+      "A 16% boost impacts company profitability."
+    ],
+    "correctIndex": 2,
+    "explanation": "The conclusion leaps from 'higher customer satisfaction' to 'enhanced user adoption'. For this argument to hold, it must assume that higher satisfaction leads directly to higher user adoption."
+  },
+  {
+    "id": "q17",
+    "category": "Algorithms & Complexity",
+    "title": "Sparse Matrix Multiplication Non-Zero Element Count",
+    "code": "// Two 10x10 sparse matrices each have 5 non-zero elements.\n// Multiply matrices A * B in 3-tuple representation.",
+    "options": [
+      "More than 5",
+      "Less than 5",
+      "Exactly 5",
+      "It depends on the result of multiplication and position of non-zero elements."
+    ],
+    "correctIndex": 3,
+    "explanation": "In sparse matrix multiplication, C[i,j] = sum(A[i,k] * B[k,j]). Non-zero products occur only when non-zero elements align at matching row/column indices k. The count of non-zero elements in C depends entirely on index overlap and product cancellation."
+  },
+  {
+    "id": "q18",
+    "category": "Algorithms & Complexity",
+    "title": "Singly Linked List Node Deletion",
+    "code": "// List: A -> B -> C -> D -> E -> F -> G -> H\n// Target: Delete node D using pointer p at A",
+    "options": [
+      "Copy p into pointers q and r, set q to D and r to C, r->next = q->next, and delete q.",
+      "Keep p at A; set p->next of C to q->next of E.",
+      "Move p to point to node D and then delete it.",
+      "Copy p to q, set q->next to null, and delete q."
+    ],
+    "correctIndex": 0,
+    "explanation": "Deleting node D requires updating predecessor node C's `next` pointer (`r->next`) to point to D's successor E (`q->next`) before freeing D (`q`)."
+  },
+  {
+    "id": "q19",
+    "category": "Algorithms & Complexity",
+    "title": "Circular Queue Front Index After Deletion",
+    "code": "// Array size N = 10\n// Current front = 5, rear = 9\n// Perform 1 dequeue (deletion)",
+    "options": [
+      "Index 6",
+      "Index 9",
+      "Index 0",
+      "Index 5"
+    ],
+    "correctIndex": 0,
+    "explanation": "In a circular queue array, front updates as (front + 1) % N. With front = 5 and N = 10, (5 + 1) % 10 = 6."
+  },
+  {
+    "id": "q20",
+    "category": "Algorithms & Complexity",
+    "title": "Root Node Identification from Binary Tree Traversals",
+    "code": "// In-order:  C, D, B, F, E, A, H, I, G\n// Pre-order: A, B, C, D, E, F, G, H, I",
+    "options": [
+      "Node C",
+      "Node A",
+      "Node F",
+      "Node D"
+    ],
+    "correctIndex": 1,
+    "explanation": "Pre-order traversal visits nodes in (Root, Left, Right) order. The first element in pre-order traversal sequence is always the root of the tree ('A')."
+  },
+  {
+    "id": "q21",
+    "category": "Algorithms & Complexity",
+    "title": "Hash Table Average Time Complexity for Insertion and Deletion",
+    "code": "// Operations: hash_insert(key, value), hash_delete(key)",
+    "options": [
+      "O(log n)",
+      "O(n log n)",
+      "O(1)",
+      "O(n)"
+    ],
+    "correctIndex": 2,
+    "explanation": "Hash functions compute bucket indices directly in constant time. On average, insertion and deletion take O(1) time complexity."
+  },
+  {
+    "id": "q22",
+    "category": "Algorithms & Complexity",
+    "title": "Optimal Data Structure for 10,000 Word Dictionary Search",
+    "code": "// Task: Store 10,000 words and perform fast existence lookup",
+    "options": [
+      "Binary Search Tree",
+      "Trie",
+      "Queue",
+      "Stack"
+    ],
+    "correctIndex": 1,
+    "explanation": "A Trie (prefix tree) provides O(L) lookup time complexity where L is the key word length, independent of total dictionary size."
+  },
+  {
+    "id": "q23",
+    "category": "Algorithms & Complexity",
+    "title": "Big-O Notation Asymptotic Constants c and n0",
+    "code": "// f(n) = 5n + 3 <= c * g(n) where g(n) = n for n >= n0 >= 1",
+    "options": [
+      "c = 5, n0 = 0",
+      "c = 5, n0 = 2",
+      "c = 6, n0 = 1",
+      "c = 6, n0 = 3"
+    ],
+    "correctIndex": 3,
+    "explanation": "Setting c = 6 gives 5n + 3 <= 6n, which simplifies to 3 <= n. Thus n0 = 3, satisfying Big-O definition f(n) <= 6n for all n >= 3."
+  },
+  {
+    "id": "q24",
+    "category": "Software Engineering Practices",
+    "title": "Deductive Syllogism — Manager and Team Leader Permissions",
+    "code": "Premise 1: All managers can view confidential documents.\nPremise 2: All team leaders are managers.",
+    "options": [
+      "All team leaders can view confidential documents.",
+      "All managers are team leaders.",
+      "No managers are team leaders.",
+      "No team leaders can view confidential documents."
+    ],
+    "correctIndex": 0,
+    "explanation": "Set inclusion: Team Leaders subset of Managers, and Managers subset of Confidential Document Viewers. Transitivity implies all Team Leaders can view confidential documents."
+  },
+  {
+    "id": "q25",
+    "category": "Algorithms & Complexity",
+    "title": "Valid Graph Spanning Tree Requirements",
+    "code": "// Graph with V = 5 vertices and E edges.",
+    "options": [
+      "Spanning Tree A",
+      "Spanning Tree B",
+      "Spanning Tree C",
+      "Spanning Tree D"
+    ],
+    "correctIndex": 3,
+    "explanation": "A valid spanning tree for a connected graph with V = 5 vertices must contain all 5 vertices connected by exactly V - 1 = 4 edges without forming any cycles."
+  }
+]

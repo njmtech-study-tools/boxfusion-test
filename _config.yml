@@ -10,6 +10,9 @@ url: https://omoinjm.github.io/boxfusion_test
 
 include:
   - docs
+  - retest
+  - questions.json
+
 
 # Theme
 theme: jekyll-theme-hacker
