@@ -1,0 +1,20 @@
+{
+  "name": "boxfusion-assessment-retest",
+  "version": "1.0.0",
+  "description": "Interactive CLI and suite to re-test Boxfusion Intermediate Software Engineer assessment questions",
+  "main": "cli_runner.js",
+  "scripts": {
+    "start": "node cli_runner.js",
+    "test": "node cli_runner.js --auto-test"
+  },
+  "keywords": [
+    "react",
+    "assessment",
+    "boxfusion",
+    "testgorilla",
+    "quiz",
+    "retest"
+  ],
+  "author": "Nhlanhla Malaza",
+  "license": "MIT"
+}

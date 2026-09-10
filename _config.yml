@@ -1,0 +1,35 @@
+title: Boxfusion Technical Assessment Portfolio
+description: Comprehensive documentation, question breakdowns, and interactive re-testing suite for the Boxfusion Intermediate Software Engineer Assessment (React, Hooks, Context, State Management, Algorithms & Complexity).
+author: Nhlanhla Malaza
+type: directory
+path: .
+parent: null
+tags: [repo, obsidian, documentation, boxfusion, react, hooks, context-api, algorithms, complexity, portfolio]
+
+url: https://omoinjm.github.io/boxfusion_test
+
+include:
+  - docs
+
+# Theme
+theme: jekyll-theme-hacker
+
+# Plugins
+plugins:
+  - jekyll-feed
+  - jekyll-seo-tag
+
+# Markdown
+markdown: kramdown
+
+# Navigation
+nav_links:
+  - text: Home
+    url: /
+  - text: Labs
+    url: /Labs/
+  - text: Re-Test Suite
+    url: /retest/
+
+# SEO
+google_site_verification: ""
